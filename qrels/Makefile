@@ -20,7 +20,7 @@ core:
 
 deep-docs: 
 	mkdir deep-docs
-	cd deep-docs; curl -s -o 2023.txt https://trec.nist.gov/data/deep/2023.qrels.docs.wihDupes.txt
+	cd deep-docs; curl -s -o 2023.txt https://trec.nist.gov/data/deep/2023.qrels.docs.withDupes.txt
 	cd deep-docs; curl -s -o 2022.txt https://trec.nist.gov/data/deep/2022.qrels.docs.inferred.txt
 	cd deep-docs; curl -s -o 2021.txt https://trec.nist.gov/data/deep/2021.qrels.docs.expanded.txt
 	cd deep-docs; curl -s -o 2020.txt https://trec.nist.gov/data/deep/2020qrels-docs.txt

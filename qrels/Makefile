@@ -1,4 +1,4 @@
-all: web robust deep-docs deep-pass core legal ml-1M beerAdvocate libraryThing
+all: web robust deep-docs deep-pass core legal ml-1M beerAdvocate libraryThing amzn-cds-vinyl amzn-musical-instruments amzn-software amzn-video-games
 
 web:
 	mkdir web
@@ -53,5 +53,29 @@ libraryThing:
 	mkdir libraryThing
 	cd libraryThing; curl -s -L https://github.com/dvalcarce/evalMetrics/raw/master/qrels/qrels-libraryThing/qrels-1.00-sample000/u1.qrel.gz | gunzip > 2018.txt
 
+amzn-cds-vinyl:
+	mkdir $@
+	cd $@;  curl `awk '{print $$2}' ../../urls.txt |grep qrels|grep test|grep CD` | gunzip -c | tr "\t" " " > 2023.txt
+	cp -R $@ $@-100
+	cp -R $@ $@-1000
+	cp -R $@ $@-2000
+amzn-musical-instruments:
+	mkdir $@
+	cd $@;  curl `awk '{print $$2}' ../../urls.txt |grep qrels|grep test|grep Musical_Instruments` | gunzip -c | tr "\t" " " > 2023.txt
+	cp -R $@ $@-100
+	cp -R $@ $@-1000
+	cp -R $@ $@-2000
+amzn-software:
+	mkdir $@
+	cd $@;  curl `awk '{print $$2}' ../../urls.txt |grep qrels|grep test|grep Software` | gunzip -c | tr "\t" " " > 2023.txt
+	cp -R $@ $@-100
+	cp -R $@ $@-1000
+	cp -R $@ $@-2000
+amzn-video-games:
+	mkdir $@
+	cd $@;  curl `awk '{print $$2}' ../../urls.txt |grep qrels|grep test|grep Video_Games` | gunzip -c | tr "\t" " " > 2023.txt
+	cp -R $@ $@-100
+	cp -R $@ $@-1000
+	cp -R $@ $@-2000
 clean:
-	rm -Rf robust deep-docs deep-pass core legal web ml-1M beerAdvocate libraryThing
+	rm -Rf robust deep-docs deep-pass core legal web ml-1M beerAdvocate libraryThing amzn-*
